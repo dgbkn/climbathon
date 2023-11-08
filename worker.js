@@ -54,7 +54,7 @@ async function handleRequest(request) {
             }
             var studentIdUrl = 'N/A'; // image
             var govIdUrl = 'N/A'; // image
-            var ssPaymentUrl =  formData.get('ssPaymentUrl') || 'N/A';
+            var ssPaymentUrl = 'N/A';
 
 
             if (formData.get('category') === 'Non Thapar Student') {
@@ -100,7 +100,7 @@ async function handleRequest(request) {
                 }
             }
 
-            if (ssPaymentUrl == "N/A") {
+            if (formData.get('ssPayment') == "N/A") {
                 const errorResponse = {
                     error: `Missing required field: ssPayment`
                 };
@@ -118,28 +118,28 @@ async function handleRequest(request) {
             // Optional fields
             const clgName = formData.get('clgName') || "N/A";
             const schoolName = formData.get('sclName') || "N/A";
-            const rNo = formData.get('rno');
+            const rNo = formData.get('rno') || "N/A";
 
             // image
 
             // Validate phone number
             const contact = standardizePhoneNumber(formData.get('phone'));
-            // if (! isValidIndianPhoneNumber(contact)) {
-            //     const errorResponse = {
-            //         error: 'Invalid phone number'
-            //     };
-            //     return new Response(JSON.stringify(errorResponse), {
-            //         status: 400, // Bad Request
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //             ... corsHeaders
-            //         }
-            //     });
-            // }
+            const trnPhone = standardizePhoneNumber(formData.get('trnPhone'));
+            if (! isValidIndianPhoneNumber(contact) && ! isValidIndianPhoneNumber(trnPhone)) {
+                const errorResponse = {
+                    error: 'Invalid phone number'
+                };
+                return new Response(JSON.stringify(errorResponse), {
+                    status: 400, // Bad Request
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ... corsHeaders
+                    }
+                });
+            }
 
             // Call the submitToGoogleForm function with the verified and formatted data
-            // await submitToGoogleForm(formData.get('name'), formData.get('email'), formData.get('age'), contact, clgName, schoolName, studentIdUrl, govIdUrl, rNo, ssPaymentUrl, formData.get('trnID'), formData.get('trnPhone'), formData.get('gender'), formData.get('category'), formData.get('gateway'), formData.get('distance'));
-            await submitToGoogleForm(formData.get('name'), formData.get('email'), formData.get('age'), contact, clgName, schoolName, studentIdUrl, govIdUrl, rNo, ssPaymentUrl, formData.get('trnID'), formData.get('trnPhone'), formData.get('gender'), "Thapar Student", formData.get('gateway'), formData.get('distance'));
+            await submitToGoogleForm(formData.get('name'), formData.get('email'), formData.get('age'), contact, clgName, schoolName, studentIdUrl, govIdUrl, rNo, ssPaymentUrl, formData.get('trnID'), trnPhone, formData.get('gender'), "Thapar Student", formData.get('gateway'), formData.get('distance'));
 
             const successResponse = {
                 success: 'Form data received and submitted successfully'
@@ -209,7 +209,7 @@ async function submitToGoogleForm(name, email, age, contact, clgName, schoolName
 
     if (response.ok) {
         console.log("Form data submitted successfully to the external Google Form");
-    } else {
+    } else { // console.log(await response.text());
         throw new Error("Failed to submit data to the external Google Form");
     }
 }
