@@ -125,24 +125,24 @@
     <form class="col s12" id="dataForm">
       <div class="row">
         <div class="input-field col s12">
-          <input id="name" type="text" class="validate" />
+          <input name="name" id="name" type="text" class="validate" />
           <label for="name">Name</label>
         </div>
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate" />
+          <input name="email" id="email" type="email" class="validate" />
           <label for="email">Email</label>
         </div>
         <div class="input-field col s12">
-          <input id="age" type="number" class="validate" />
+          <input name="age" id="age" type="number" class="validate" />
           <label for="age">Age</label>
         </div>
         <div class="input-field col s12">
-          <input id="phone" type="tel" class="validate" />
+          <input name="phone" id="phone" type="tel" class="validate" />
           <label for="phone">Phone Number</label>
         </div>
 
         <div class="input-field col s12">
-          <select id="gender">
+          <select name="gender" id="gender">
             <option value="" disabled selected>Choose your gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -152,7 +152,7 @@
 
         <!-- Category Selection Dropdown -->
         <div class="input-field col s12">
-          <select id="category">
+          <select name="category" id="category">
             <option value="" disabled selected>Choose your category</option>
             <option value="thapar-student">Thapar Student</option>
             <option value="non-thapar-student">Non Thapar Student</option>
@@ -170,7 +170,7 @@
         <img src="/qr.jpeg">
         <!-- Add specific fields and descriptions for Thapar Student here -->
         <div class="input-field col s12">
-          <input id="rno" type="number" class="validate" />
+          <input name="rno" id="rno" type="number" class="validate" />
           <label for="rno">Roll Number</label>
         </div>
 
@@ -183,11 +183,11 @@
         <img src="/qr.jpeg">
         <!-- Add specific fields and descriptions for Non Thapar Student here -->
         <div class="input-field col s12">
-          <input id="clgName" type="text" class="validate" />
+          <input name="clgName" id="clgName" type="text" class="validate" />
           <label for="clgName">Are you a college student? (if yes, enter college name)</label>
         </div>
         <div class="input-field col s12">
-          <input id="sclName" type="text" class="validate" />
+          <input name="sclName" id="sclName" type="text" class="validate" />
           <label for="sclName">Are you a school student? (if yes, enter school name)</label>
         </div>
         <div class="file-field input-field">
@@ -231,15 +231,15 @@
         </div>
 
         <div class="input-field col s12">
-          <input id="trnID" type="number" class="validate" />
+          <input name="trnID" id="trnID" type="number" class="validate" />
           <label for="trnID">Transaction ID</label>
         </div>
         <div class="input-field col s12">
-          <input id="trnPhone" type="tel" class="validate" />
+          <input name="trnPhone" id="trnPhone" type="tel" class="validate" />
           <label for="trnPhone">Phone Number through which the Payment was made</label>
         </div>
         <div class="input-field col s12">
-          <select id="gateway">
+          <select name="gateway" id="gateway">
             <option value="" disabled selected>Choose your payment gateway</option>
             <option value="Paytm">Paytm</option>
             <option value="Phonepe">Phonepe</option>
@@ -249,7 +249,7 @@
           <label>Payment Gateway Used</label>
         </div>
         <div class="input-field col s12">
-          <select id="distance">
+          <select name="distance" id="distance">
             <option value="" disabled selected>Choose your running distance</option>
             <option value="5km">5km</option>
             <option value="10km">10km</option>
