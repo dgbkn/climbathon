@@ -216,7 +216,6 @@
             </div>
             <div class="file-path-wrapper">
               <input
-                name="studentIdUrl"
                 class="file-path validate"
                 type="text"
               />
@@ -239,9 +238,10 @@
               <input type="file" id="govIdUrl" accept="image/*" />
             </div>
             <div class="file-path-wrapper">
-              <input name="govIdUrl" class="file-path validate" type="text" />
+              <input class="file-path validate" type="text" />
             </div>
           </div>
+
           <div class="progress hide" id="govIdUrlProgress">
             <div class="indeterminate"></div>
           </div>
@@ -256,7 +256,6 @@
             </div>
             <div class="file-path-wrapper">
               <input
-                name="ssPaymentUrl"
                 class="file-path validate"
                 type="text"
               />
@@ -265,6 +264,7 @@
           <div class="progress hide" id="ssPaymentUrlProgress">
             <div class="indeterminate"></div>
           </div>
+
 
           <div class="input-field col s12">
             <input name="trnID" id="trnID" type="number" class="validate" />
@@ -306,6 +306,13 @@
           Submit
           <i class="material-icons right">send</i>
         </button>
+
+
+        <input name="studentIdUrl" type="text" class="hide"/>
+        <input name="govIdUrl" type="text" class="hide"/>
+        <input name="ssPaymentUrl" type="text" class="hide"/>
+
+
       </form>
     </div>
 
