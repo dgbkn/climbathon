@@ -16,8 +16,7 @@ function standardizePhoneNumber(phoneNumber) {
 }
 
 function isValidIndianPhoneNumber(phoneNumber) {
-    const regex = /^[0-9]{10}$/;
-    return regex.test(phoneNumber);
+    return phoneNumber.match(/\d/g).length===10;
 }
 
 async function handleRequest(request) {
