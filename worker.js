@@ -44,7 +44,7 @@ addEventListener('fetch', (event) => {
   
         // Optional fields
         const clgName = formData.get('clgName') || "N/A";
-        const schoolName = formData.get('sclName');
+        const schoolName = formData.get('sclName') || "N/A";
         const rNo = formData.get('rno');
         const studentIdUrl = formData.get('studentIdUrl') || ''; // image
         const govIdUrl = formData.get('govIdUrl') || ''; // image
