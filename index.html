@@ -1,441 +1,485 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register For Climbathon</title>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Register For Climbathon</title>
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
 
-  <style>
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-    }
+      body {
+        background-image: url("/bg.webp");
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0.6);
+        background-blend-mode: color;
+      }
 
-    body {
-      background-image: url("/bg.webp");
-      background-size: cover;
-      background-color: rgba(0, 0, 0, 0.6);
-      background-blend-mode: color;
-    }
+      * {
+        color: white;
+      }
 
-    * {
-      color: white;
-    }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
 
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
+      /* for mozilla */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
 
-    /* for mozilla */
-    input[type="number"] {
-      -moz-appearance: textfield;
-    }
+      .modal {
+        background-color: rgb(30, 30, 30);
+      }
 
-    .modal {
-      background-color: rgb(30, 30, 30);
-    }
-
-    .roboButton {
-      padding: 0.75em 2em;
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #fff;
-      text-shadow: 0 5px 20px rgba(192, 36, 0, 0.4),
-        0 2px 2px rgba(192, 36, 0, 0.4);
-      background-image: radial-gradient(100% 75% at 50% 100%,
+      .roboButton {
+        padding: 0.75em 2em;
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        text-shadow: 0 5px 20px rgba(192, 36, 0, 0.4),
+          0 2px 2px rgba(192, 36, 0, 0.4);
+        background-image: radial-gradient(
+          100% 75% at 50% 100%,
           #fed262 0%,
-          #c40900 100%);
-      border: none;
-      border-radius: 100px;
-      box-shadow: inset 0 3px 15px 0 rgba(174, 32, 0, 1),
-        inset 0 -3px 0 0 rgba(254, 210, 98, 1),
-        inset 0 40px 0 0 rgba(254, 210, 98, 0.4),
-        inset 0 20px 20px 0 rgba(248, 191, 69, 1), 0 0 0 8px #000,
-        0 9px 0 0 #444, 0 0 20px 0 rgba(254, 210, 98, 0.4),
-        0 40px 20px -30px rgba(254, 210, 98, 0.2);
+          #c40900 100%
+        );
+        border: none;
+        border-radius: 100px;
+        box-shadow: inset 0 3px 15px 0 rgba(174, 32, 0, 1),
+          inset 0 -3px 0 0 rgba(254, 210, 98, 1),
+          inset 0 40px 0 0 rgba(254, 210, 98, 0.4),
+          inset 0 20px 20px 0 rgba(248, 191, 69, 1), 0 0 0 8px #000,
+          0 9px 0 0 #444, 0 0 20px 0 rgba(254, 210, 98, 0.4),
+          0 40px 20px -30px rgba(254, 210, 98, 0.2);
 
-      transition: 0.2s ease-in-out;
+        transition: 0.2s ease-in-out;
 
-      &:hover {
-        cursor: pointer;
-        background-image: radial-gradient(100% 75% at 50% 100%,
+        &:hover {
+          cursor: pointer;
+          background-image: radial-gradient(
+            100% 75% at 50% 100%,
             #f7b940 0%,
-            #a20700 100%);
-      }
-
-      &:focus,
-      &:active {
-        outline: none;
-        color: #f9e3bf;
-        background-image: radial-gradient(100% 75% at 50% 100%,
-            #f58725 0%,
-            #850600 100%);
-        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.4),
-          inset 0 0 10px rgba(133, 6, 0, 1),
-          inset 0 3px 15px 0 rgba(174, 32, 0, 1),
-          inset 0 40px 0 0 rgba(254, 210, 98, 0.3),
-          inset 0 20px 20px 0 rgba(248, 191, 69, 0.75), 0 0 0 8px #000,
-          0 9px 0 0 #444;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="center-align">
-    <div class="row imageBox">
-      <img src="/header.png" class="responsive-img col s12 l4 m8 offset-l4 offset-m3" />
-    </div>
-  </div>
-
-  <hr />
-
-  <div class="container">
-    <h3>Student Registration Form</h3>
-    <p>
-      Rotaract club of TIET in association with Thapar's largest techno
-      cultural festival, Saturnalia is planning to organize a Climathon on
-      26th of November. Climathon is not just a run, it's a collective
-      movement, inviting individuals aged 16 years and above to come together
-      for a 5km or 10km race.
-      <br />
-      Beyond the finish line, it's a powerful call to action, where every
-      stride is dedicated to addressing one of the most critical challenges of
-      our time: achieving the Sustainable Development Goals (SDGs).
-      <br />
-      This race isn't just about the distance; it's about closing the gap to a
-      sustainable future, one step at a time. Join Climathon, where your run
-      becomes a commitment to making the world a better place.
-      <br /><br />
-      For Contact<br />
-      Rtr Hitakshi Hans - 9717335961
-      <br />
-      Rtr Lakshit Bhansali- 9625838324
-      <br />
-      Rtr Anjali Thakur - 7087805620
-      <br /><br />
-    </p>
-    <form class="col s12" id="dataForm">
-      <div class="row">
-        <div class="input-field col s12">
-          <input name="name" id="name" type="text" class="validate" />
-          <label for="name">Name</label>
-        </div>
-        <div class="input-field col s12">
-          <input name="email" id="email" type="email" class="validate" />
-          <label for="email">Email</label>
-        </div>
-        <div class="input-field col s12">
-          <input name="age" id="age" type="number" class="validate" />
-          <label for="age">Age</label>
-        </div>
-        <div class="input-field col s12">
-          <input name="phone" id="phone" type="tel" class="validate" />
-          <label for="phone">Phone Number</label>
-        </div>
-
-        <div class="input-field col s12">
-          <select name="gender" id="gender">
-            <option value="" disabled selected>Choose your gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-          <label>Gender</label>
-        </div>
-
-        <!-- Category Selection Dropdown -->
-        <div class="input-field col s12">
-          <select name="category" id="category">
-            <option value="" disabled selected>Choose your category</option>
-            <option value="Thapar Student">Thapar Student</option>
-            <option value="Non Thapar Student">Non Thapar Student</option>
-            <option value="Not a Student">Not a Student</option>
-          </select>
-          <label>Category</label>
-        </div>
-      </div>
-
-      <!-- Thapar Student Form -->
-      <div id="Thapar Student" class="category-form hide">
-        <h5>Thapar Student</h5>
-        <h5>Price for entry:- <b>Rs. 300/-</b></h5>
-        <img src="/qr.jpeg" />
-        <!-- Add specific fields and descriptions for Thapar Student here -->
-        <div class="input-field col s12">
-          <input name="rno" id="rno" type="number" class="validate" />
-          <label for="rno">Roll Number</label>
-        </div>
-      </div>
-
-      <!-- Non Thapar Student Form -->
-      <div id="Non Thapar Student" class="category-form hide">
-        <h5>Non Thapar Student</h5>
-        <h5>Price for entry:- <b>Rs. 400/-</b></h5>
-        <img src="/qr.jpeg" />
-        <!-- Add specific fields and descriptions for Non Thapar Student here -->
-        <div class="input-field col s12">
-          <input name="clgName" id="clgName" type="text" class="validate" />
-          <label for="clgName">Are you a college student? (if yes, enter college name)</label>
-        </div>
-        <div class="input-field col s12">
-          <input name="sclName" id="sclName" type="text" class="validate" />
-          <label for="sclName">Are you a school student? (if yes, enter school name)</label>
-        </div>
-
-        <div class="file-field input-field">
-          <div class="btn">
-            <span>Upload School/College ID</span>
-            <input type="file" id="studentIdUrl" accept="image/*" />
-          </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" />
-          </div>
-        </div>
-        <div class="progress hide" id="studentIdUrlProgress">
-          <div class="indeterminate"></div>
-        </div>
-      </div>
-
-      <!-- Not a Student Form -->
-      <div id="Not a Student" class="category-form hide">
-        <h5>Not a Student</h5>
-        <h5>Price for entry:- <b>Rs. 500/</b>-</h5>
-        <img src="/qr.jpeg" />
-        <!-- Add specific fields and descriptions for Not a Student here -->
-        <div class="file-field input-field">
-          <div class="btn">
-            <span>Upload Government ID Proof</span>
-            <input type="file" id="govIdUrl" accept="image/*" />
-          </div>
-          <div class="file-path-wrapper">
-            <input name="govIdUrl" class="file-path validate" type="text" />
-          </div>
-        </div>
-        <div class="progress hide" id="govIdUrlProgress">
-          <div class="indeterminate"></div>
-        </div>
-      </div>
-
-      <!-- Common fields for all categories -->
-      <div class="row">
-        <div class="file-field input-field">
-          <div class="btn">
-            <span>Upload Payment Screenshot</span>
-            <input type="file" id="ssPaymentUrl" accept="image/*" />
-          </div>
-          <div class="file-path-wrapper">
-            <input name="ssPaymentUrl" class="file-path validate" type="text" />
-          </div>
-        </div>
-        <div class="progress hide" id="ssPaymentUrlProgress">
-          <div class="indeterminate"></div>
-        </div>
-
-        <div class="input-field col s12">
-          <input name="trnID" id="trnID" type="number" class="validate" />
-          <label for="trnID">Transaction ID</label>
-        </div>
-        <div class="input-field col s12">
-          <input name="trnPhone" id="trnPhone" type="tel" class="validate" />
-          <label for="trnPhone">Phone Number through which the Payment was made</label>
-        </div>
-        <div class="input-field col s12">
-          <select name="gateway" id="gateway">
-            <option value="" disabled selected>
-              Choose your payment gateway
-            </option>
-            <option value="Paytm">Paytm</option>
-            <option value="Phonepe">Phonepe</option>
-            <option value="Gpay">Gpay</option>
-            <option value="Other">Other</option>
-          </select>
-          <label>Payment Gateway Used</label>
-        </div>
-        <div class="input-field col s12">
-          <select name="distance" id="distance">
-            <option value="" disabled selected>
-              Choose your running distance
-            </option>
-            <option value="5km">5km</option>
-            <option value="10km">10km</option>
-          </select>
-          <label>Running Distance</label>
-        </div>
-      </div>
-
-      <!-- Submit Button -->
-      <button class="btn waves-effect waves-light" type="submit" name="action">
-        Submit
-        <i class="material-icons right">send</i>
-      </button>
-    </form>
-  </div>
-
-  <!-- Initialize Materialize CSS components -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      M.AutoInit();
-    });
-
-
-    // Show/hide the appropriate category form based on user selection
-    const selectCategory = () => {
-      const category = document.getElementById("category").value;
-      document
-        .querySelectorAll(".category-form")
-        .forEach((form) => form.classList.add("hide"));
-      if (!category.length) return;
-      document.getElementById(category).classList.remove("hide");
-    };
-
-    // Add an event listener to the category selection input
-    document
-      .getElementById("category")
-      .addEventListener("change", selectCategory);
-    selectCategory(); // Initialize based on the default selection
-
-
-    const form = document.getElementById("dataForm");
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-      console.log('Form submitted');
-      const formData = new FormData(form);
-      submitFormData(formData);
-    });
-
-    async function submitFormData(formData) {
-      try {
-        const response = await fetch("https://sat.sakshhamtg.workers.dev/", {
-          method: "POST",
-          body: formData,
-        });
-
-        const res = await response.json();
-        console.log(res);
-
-        if (res.error) {
-          M.toast({ html: "Error: " + res.error, classes: "bold-toast red" });
-        } else {
-          M.toast({ html: "Form submitted successfully", classes: "bold-toast green" });
-          document.getElementById("dataForm").reset();
+            #a20700 100%
+          );
         }
-      } catch (error) {
-        // Handle error
-        M.toast({ html: "Error: " + error.message, classes: "bold-toast red" });
+
+        &:focus,
+        &:active {
+          outline: none;
+          color: #f9e3bf;
+          background-image: radial-gradient(
+            100% 75% at 50% 100%,
+            #f58725 0%,
+            #850600 100%
+          );
+          box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.4),
+            inset 0 0 10px rgba(133, 6, 0, 1),
+            inset 0 3px 15px 0 rgba(174, 32, 0, 1),
+            inset 0 40px 0 0 rgba(254, 210, 98, 0.3),
+            inset 0 20px 20px 0 rgba(248, 191, 69, 0.75), 0 0 0 8px #000,
+            0 9px 0 0 #444;
+        }
       }
-    }
+    </style>
+  </head>
+
+  <body>
+    <div class="center-align">
+      <div class="row imageBox">
+        <img
+          src="/header.png"
+          class="responsive-img col s12 l4 m8 offset-l4 offset-m3"
+        />
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="container">
+      <h3>Student Registration Form</h3>
+      <p>
+        Rotaract club of TIET in association with Thapar's largest techno
+        cultural festival, Saturnalia is planning to organize a Climathon on
+        26th of November. Climathon is not just a run, it's a collective
+        movement, inviting individuals aged 16 years and above to come together
+        for a 5km or 10km race.
+        <br />
+        Beyond the finish line, it's a powerful call to action, where every
+        stride is dedicated to addressing one of the most critical challenges of
+        our time: achieving the Sustainable Development Goals (SDGs).
+        <br />
+        This race isn't just about the distance; it's about closing the gap to a
+        sustainable future, one step at a time. Join Climathon, where your run
+        becomes a commitment to making the world a better place.
+        <br /><br />
+        For Contact<br />
+        Rtr Hitakshi Hans - 9717335961
+        <br />
+        Rtr Lakshit Bhansali- 9625838324
+        <br />
+        Rtr Anjali Thakur - 7087805620
+        <br /><br />
+      </p>
+      <form class="col s12" id="dataForm">
+        <div class="row">
+          <div class="input-field col s12">
+            <input name="name" id="name" type="text" class="validate" />
+            <label for="name">Name</label>
+          </div>
+          <div class="input-field col s12">
+            <input name="email" id="email" type="email" class="validate" />
+            <label for="email">Email</label>
+          </div>
+          <div class="input-field col s12">
+            <input name="age" id="age" type="number" class="validate" />
+            <label for="age">Age</label>
+          </div>
+          <div class="input-field col s12">
+            <input name="phone" id="phone" type="tel" class="validate" />
+            <label for="phone">Phone Number</label>
+          </div>
+
+          <div class="input-field col s12">
+            <select name="gender" id="gender">
+              <option value="" disabled selected>Choose your gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <label>Gender</label>
+          </div>
+
+          <!-- Category Selection Dropdown -->
+          <div class="input-field col s12">
+            <select name="category" id="category">
+              <option value="" disabled selected>Choose your category</option>
+              <option value="Thapar Student">Thapar Student</option>
+              <option value="Non Thapar Student">Non Thapar Student</option>
+              <option value="Not a Student">Not a Student</option>
+            </select>
+            <label>Category</label>
+          </div>
+        </div>
+
+        <!-- Thapar Student Form -->
+        <div id="Thapar Student" class="category-form hide">
+          <h5>Thapar Student</h5>
+          <h5>Price for entry:- <b>Rs. 300/-</b></h5>
+          <img src="/qr.jpeg" />
+          <!-- Add specific fields and descriptions for Thapar Student here -->
+          <div class="input-field col s12">
+            <input name="rno" id="rno" type="number" class="validate" />
+            <label for="rno">Roll Number</label>
+          </div>
+        </div>
+
+        <!-- Non Thapar Student Form -->
+        <div id="Non Thapar Student" class="category-form hide">
+          <h5>Non Thapar Student</h5>
+          <h5>Price for entry:- <b>Rs. 400/-</b></h5>
+          <img src="/qr.jpeg" />
+          <!-- Add specific fields and descriptions for Non Thapar Student here -->
+          <div class="input-field col s12">
+            <input name="clgName" id="clgName" type="text" class="validate" />
+            <label for="clgName"
+              >Are you a college student? (if yes, enter college name)</label
+            >
+          </div>
+          <div class="input-field col s12">
+            <input name="sclName" id="sclName" type="text" class="validate" />
+            <label for="sclName"
+              >Are you a school student? (if yes, enter school name)</label
+            >
+          </div>
+
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>Upload School/College ID</span>
+              <input type="file" id="studentIdUrl" accept="image/*" />
+            </div>
+            <div class="file-path-wrapper">
+              <input
+                class="file-path validate"
+                type="text"
+              />
+            </div>
+          </div>
+          <div class="progress hide" id="studentIdUrlProgress">
+            <div class="indeterminate"></div>
+          </div>
+        </div>
+
+        <!-- Not a Student Form -->
+        <div id="Not a Student" class="category-form hide">
+          <h5>Not a Student</h5>
+          <h5>Price for entry:- <b>Rs. 500/</b>-</h5>
+          <img src="/qr.jpeg" />
+          <!-- Add specific fields and descriptions for Not a Student here -->
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>Upload Government ID Proof</span>
+              <input type="file" id="govIdUrl" accept="image/*" />
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" />
+            </div>
+          </div>
+
+          <div class="progress hide" id="govIdUrlProgress">
+            <div class="indeterminate"></div>
+          </div>
+        </div>
+
+        <!-- Common fields for all categories -->
+        <div class="row">
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>Upload Payment Screenshot</span>
+              <input type="file" id="ssPaymentUrl" accept="image/*" />
+            </div>
+            <div class="file-path-wrapper">
+              <input
+                class="file-path validate"
+                type="text"
+              />
+            </div>
+          </div>
+          <div class="progress hide" id="ssPaymentUrlProgress">
+            <div class="indeterminate"></div>
+          </div>
 
 
+          <div class="input-field col s12">
+            <input name="trnID" id="trnID" type="number" class="validate" />
+            <label for="trnID">Transaction ID</label>
+          </div>
+          <div class="input-field col s12">
+            <input name="trnPhone" id="trnPhone" type="tel" class="validate" />
+            <label for="trnPhone">Phone Number through which the Payment was made</label
+            >
+          </div>
+          <div class="input-field col s12">
+            <select name="gateway" id="gateway">
+              <option value="" disabled selected>Choose your payment gateway
+              </option>
+              <option value="Paytm">Paytm</option>
+              <option value="Phonepe">Phonepe</option>
+              <option value="Gpay">Gpay</option>
+              <option value="Other">Other</option>
+            </select>
+            <label>Payment Gateway Used</label>
+          </div>
+          <div class="input-field col s12">
+            <select name="distance" id="distance">
+              <option value="" disabled selected>Choose your running distance
+              </option>
+              <option value="5km">5km</option>
+              <option value="10km">10km</option>
+            </select>
+            <label>Running Distance</label>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          class="btn waves-effect waves-light"
+          type="submit"
+          name="action"
+        >
+          Submit
+          <i class="material-icons right">send</i>
+        </button>
 
 
-    async function startImageFieldsInit() {
-      const imageFields = ['studentIdUrl', 'govIdUrl', 'ssPaymentUrl'];
-      for (const field of imageFields) {
-        const fileInput = document.getElementById(field);
-        fileInput.addEventListener('change', async (event) => {
-          if (fileInput.files.length > 0) {
-            const progressElement = document.getElementById(`${field}Progress`);
-            try {
-              const imageUrl = await uploadImage(fileInput.files[0], progressElement);
-              // formData.set(field, imageUrl);
-              document.getElementsByName(field).value = imageUrl;
-            } catch (error) {
-              M.toast({ html: `Error uploading ${field}: ${error.message}`, classes: 'bold-toast red' });
-              return;
-            }
-          }
-        });
-      }
-    }
-
-    startImageFieldsInit();
+        <input id="studentIdUrlLink" name="studentIdUrl" type="text" class="hide"/>
+        <input id="govIdUrlLink" name="govIdUrl" type="text" class="hide"/>
+        <input id="ssPaymentUrlLink" name="ssPaymentUrl" type="text" class="hide"/>
 
 
+      </form>
+    </div>
 
-    const imgbbApiKey = 'e87add19a429b1c60823e9800546e67b';
-
-    // Define ImgBB API endpoint
-    const imgbbEndpoint = 'https://api.imgbb.com/1/upload';
-
-    // Function to upload an image and return the image URL
-    const uploadImage = async (file, progressElement) => {
-      return new Promise((resolve, reject) => {
-        progressElement.classList.remove('hide');
-
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', imgbbEndpoint, true);
-
-        xhr.upload.onprogress = (event) => {
-          if (event.lengthComputable) {
-            const progress = (event.loaded / event.total) * 100;
-            progressElement.style.width = `${progress}%`;
-          }
-        };
-
-
-
-        xhr.onload = () => {
-          progressElement.classList.add('hide');
-
-          if (xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            resolve(response.data.url);
-          } else {
-            reject(new Error('Image upload failed'));
-          }
-        };
-
-        xhr.onerror = () => {
-          reject(new Error('Image upload failed'));
-        };
-
-        const formData = new FormData();
-        formData.append('key', imgbbApiKey);
-        formData.append('image', file);
-
-        xhr.send(formData);
+    <!-- Initialize Materialize CSS components -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        M.AutoInit();
       });
-    };
-  </script>
 
-  <hr />
+      // Show/hide the appropriate category form based on user selection
+      const selectCategory = () => {
+        const category = document.getElementById("category").value;
+        document
+          .querySelectorAll(".category-form")
+          .forEach((form) => form.classList.add("hide"));
+        if (!category.length) return;
+        document.getElementById(category).classList.remove("hide");
+      };
 
-  <div class="center-align">
-    <img src="/footer.png" class="responsive-img" style="height: 45vh" />
-  </div>
+      // Add an event listener to the category selection input
+      document
+        .getElementById("category")
+        .addEventListener("change", selectCategory);
+      selectCategory(); // Initialize based on the default selection
 
-  <div id="error-modal" class="modal">
-    <div class="modal-content">
-      <h4>Error</h4>
-      <p id="error-message"></p>
+      const form = document.getElementById("dataForm");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        console.log("Form submitted");
+        const formData = new FormData(form);
+        submitFormData(formData);
+      });
+
+      async function submitFormData(formData) {
+        try {
+          const response = await fetch("https://sat.sakshhamtg.workers.dev/", {
+            method: "POST",
+            body: formData,
+          });
+
+          const res = await response.json();
+          console.log(res);
+
+          if (res.error) {
+            M.toast({ html: "Error: " + res.error, classes: "bold-toast red" });
+          } else {
+            M.toast({
+              html: "Form submitted successfully",
+              classes: "bold-toast green",
+            });
+            document.getElementById("dataForm").reset();
+          }
+        } catch (error) {
+          // Handle error
+          M.toast({
+            html: "Error: " + error.message,
+            classes: "bold-toast red",
+          });
+        }
+      }
+
+      async function startImageFieldsInit() {
+        const imageFields = ["studentIdUrl", "govIdUrl", "ssPaymentUrl"];
+        for (const field of imageFields) {
+          const fileInput = document.getElementById(field);
+          fileInput.addEventListener("change", async (event) => {
+            if (fileInput.files.length > 0) {
+              const progressElement = document.getElementById(
+                `${field}Progress`
+              );
+              try {
+                const imageUrl = await uploadImage(
+                  fileInput.files[0],
+                  progressElement
+                );
+                // formData.set(field, imageUrl);
+                document.getElementById(field + "Link").value = imageUrl;
+              } catch (error) {
+                M.toast({
+                  html: `Error uploading ${field}: ${error.message}`,
+                  classes: "bold-toast red",
+                });
+                return;
+              }
+            }
+          });
+        }
+      }
+
+      startImageFieldsInit();
+
+      const imgbbApiKey = "e87add19a429b1c60823e9800546e67b";
+
+      // Define ImgBB API endpoint
+      const imgbbEndpoint = "https://api.imgbb.com/1/upload";
+
+      // Function to upload an image and return the image URL
+      const uploadImage = async (file, progressElement) => {
+        return new Promise((resolve, reject) => {
+          progressElement.classList.remove("hide");
+
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", imgbbEndpoint, true);
+
+          xhr.upload.onprogress = (event) => {
+            if (event.lengthComputable) {
+              const progress = (event.loaded / event.total) * 100;
+              progressElement.style.width = `${progress}%`;
+            }
+          };
+
+          xhr.onload = () => {
+            progressElement.classList.add("hide");
+
+            if (xhr.status === 200) {
+              const response = JSON.parse(xhr.responseText);
+              resolve(response.data.url);
+            } else {
+              reject(new Error("Image upload failed"));
+            }
+          };
+
+          xhr.onerror = () => {
+            reject(new Error("Image upload failed"));
+          };
+
+          const formData = new FormData();
+          formData.append("key", imgbbApiKey);
+          formData.append("image", file);
+
+          xhr.send(formData);
+        });
+      };
+    </script>
+
+    <hr />
+
+    <div class="center-align">
+      <img src="/footer.png" class="responsive-img" style="height: 45vh" />
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
-    </div>
-  </div>
 
-  <!-- Add a modal for success messages -->
-  <div id="success-modal" class="modal">
-    <div class="modal-content">
-      <h4>Success</h4>
-      <p>Registered successfully.</p>
+    <div id="error-modal" class="modal">
+      <div class="modal-content">
+        <h4>Error</h4>
+        <p id="error-message"></p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+          >OK</a
+        >
+      </div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
-    </div>
-  </div>
-  <script src="/worker.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</body>
 
+    <!-- Add a modal for success messages -->
+    <div id="success-modal" class="modal">
+      <div class="modal-content">
+        <h4>Success</h4>
+        <p>Registered successfully.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+          >OK</a
+        >
+      </div>
+    </div>
+    <script src="/worker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
 </html>
