@@ -1,147 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register For Climbathon</title>
-    <!-- Compiled and minified CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
 
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register For Climbathon</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-      body {
-        background-image: url("/bg.webp");
-        background-size: cover;
-        background-color: rgba(0, 0, 0, 0.6);
-        background-blend-mode: color;
-      }
-      * {
-        color: white;
-      }
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
 
-      .modal {
-        background-color: rgb(30, 30, 30);
-      }
-      .roboButton {
-        padding: 0.75em 2em;
-        font-size: 1.25rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #fff;
-        text-shadow: 0 5px 20px rgba(192, 36, 0, 0.4),
-          0 2px 2px rgba(192, 36, 0, 0.4);
-        background-image: radial-gradient(
-          100% 75% at 50% 100%,
+    body {
+      background-image: url("/bg.webp");
+      background-size: cover;
+      background-color: rgba(0, 0, 0, 0.6);
+      background-blend-mode: color;
+    }
+
+    * {
+      color: white;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+
+    /* for mozilla */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    .modal {
+      background-color: rgb(30, 30, 30);
+    }
+
+    .roboButton {
+      padding: 0.75em 2em;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 5px 20px rgba(192, 36, 0, 0.4),
+        0 2px 2px rgba(192, 36, 0, 0.4);
+      background-image: radial-gradient(100% 75% at 50% 100%,
           #fed262 0%,
-          #c40900 100%
-        );
-        border: none;
-        border-radius: 100px;
-        box-shadow: inset 0 3px 15px 0 rgba(174, 32, 0, 1),
-          inset 0 -3px 0 0 rgba(254, 210, 98, 1),
-          inset 0 40px 0 0 rgba(254, 210, 98, 0.4),
-          inset 0 20px 20px 0 rgba(248, 191, 69, 1), 0 0 0 8px #000,
-          0 9px 0 0 #444, 0 0 20px 0 rgba(254, 210, 98, 0.4),
-          0 40px 20px -30px rgba(254, 210, 98, 0.2);
+          #c40900 100%);
+      border: none;
+      border-radius: 100px;
+      box-shadow: inset 0 3px 15px 0 rgba(174, 32, 0, 1),
+        inset 0 -3px 0 0 rgba(254, 210, 98, 1),
+        inset 0 40px 0 0 rgba(254, 210, 98, 0.4),
+        inset 0 20px 20px 0 rgba(248, 191, 69, 1), 0 0 0 8px #000,
+        0 9px 0 0 #444, 0 0 20px 0 rgba(254, 210, 98, 0.4),
+        0 40px 20px -30px rgba(254, 210, 98, 0.2);
 
-        transition: 0.2s ease-in-out;
-        &:hover {
-          cursor: pointer;
-          background-image: radial-gradient(
-            100% 75% at 50% 100%,
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        cursor: pointer;
+        background-image: radial-gradient(100% 75% at 50% 100%,
             #f7b940 0%,
-            #a20700 100%
-          );
-        }
-
-        &:focus,
-        &:active {
-          outline: none;
-          color: #f9e3bf;
-          background-image: radial-gradient(
-            100% 75% at 50% 100%,
-            #f58725 0%,
-            #850600 100%
-          );
-          box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.4),
-            inset 0 0 10px rgba(133, 6, 0, 1),
-            inset 0 3px 15px 0 rgba(174, 32, 0, 1),
-            inset 0 40px 0 0 rgba(254, 210, 98, 0.3),
-            inset 0 20px 20px 0 rgba(248, 191, 69, 0.75), 0 0 0 8px #000,
-            0 9px 0 0 #444;
-        }
+            #a20700 100%);
       }
-    </style>
-  </head>
-  <body>
-    <div class="center-align">
 
-      <div class="row imageBox">
-        <img
-          src="/header.png"
-          class="responsive-img col s12 l4 m8 offset-l4 offset-m3"
-        />
-      </div>
+      &:focus,
+      &:active {
+        outline: none;
+        color: #f9e3bf;
+        background-image: radial-gradient(100% 75% at 50% 100%,
+            #f58725 0%,
+            #850600 100%);
+        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.4),
+          inset 0 0 10px rgba(133, 6, 0, 1),
+          inset 0 3px 15px 0 rgba(174, 32, 0, 1),
+          inset 0 40px 0 0 rgba(254, 210, 98, 0.3),
+          inset 0 20px 20px 0 rgba(248, 191, 69, 0.75), 0 0 0 8px #000,
+          0 9px 0 0 #444;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="center-align">
+
+    <div class="row imageBox">
+      <img src="/header.png" class="responsive-img col s12 l4 m8 offset-l4 offset-m3" />
     </div>
+  </div>
 
-    <hr />
+  <hr />
 
-    <div class="container">
-      <h3>Student Registration Form</h3>
-      <form class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="email" type="email" class="validate" />
-            <label for="email">Email</label>
-          </div>
-          <div class="input-field col s12">
-            <input id="phone" type="tel" class="validate" />
-            <label for="phone">Phone Number</label>
-          </div>
+  <div class="container">
+    <h3>Student Registration Form</h3>
+    <p>
+      Rotaract club of TIET in association with Thapar's largest techno cultural festival, Saturnalia is planning to
+      organize a Climathon on 26th of November. Climathon is not just a run, it's a collective movement, inviting
+      individuals aged 16 years and above to come together for a 5km or 10km race.
+      <br>
+      Beyond the finish line, it's a powerful call to action, where every stride is dedicated to addressing one of the
+      most critical challenges of our time: achieving the Sustainable Development Goals (SDGs).
+      <br>
+      This race isn't just about the distance; it's about closing the gap to a sustainable future, one step at a time.
+      Join Climathon, where your run becomes a commitment to making the world a better place.
+      <br><br>
+      For Contact<br>
+      Rtr Hitakshi Hans - 9717335961
+      <br>
+      Rtr Lakshit Bhansali- 9625838324
+      <br>
+      Rtr Anjali Thakur - 7087805620
+      <br><br>
+    </p>
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="name" type="text" class="validate" />
+          <label for="name">Name</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate" />
+          <label for="email">Email</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="age" type="number" class="validate" />
+          <label for="age">Age</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="phone" type="tel" class="validate" />
+          <label for="phone">Phone Number</label>
+        </div>
+
+        <div class="input-field col s12">
+          <select id="gender">
+            <option value="" disabled selected>Choose your gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <label>Gender</label>
         </div>
 
         <!-- Category Selection Dropdown -->
         <div class="input-field col s12">
           <select id="category">
             <option value="" disabled selected>Choose your category</option>
-            <option value="thapar">Thapar Student</option>
-            <option value="non-thapar">Non Thapar Student</option>
+            <option value="thapar-student">Thapar Student</option>
+            <option value="non-thapar-student">Non Thapar Student</option>
             <option value="not-a-student">Not a Student</option>
           </select>
           <label>Category</label>
         </div>
+      </div>
 
-        <!-- Thapar Student Form -->
-        <div id="thapar-student" class="category-form hide">
-          <h5>Thapar Student</h5>
-          <!-- Add specific fields and descriptions for Thapar Student here -->
+
+      <!-- Thapar Student Form -->
+      <div id="thapar-student" class="category-form hide">
+        <h5>Thapar Student</h5>
+        <h5>Price for entry:- <b>Rs. 300/-</b></h5>
+        <!-- Add specific fields and descriptions for Thapar Student here -->
+        <div class="input-field col s12">
+          <input id="rno" type="number" class="validate" />
+          <label for="rno">Roll Number</label>
         </div>
 
-        <!-- Non Thapar Student Form -->
-        <div id="non-thapar-student" class="category-form hide">
-          <h5>Non Thapar Student</h5>
-          <!-- Add specific fields and descriptions for Non Thapar Student here -->
-        </div>
+      </div>
 
-        <!-- Not a Student Form -->
-        <div id="not-a-student" class="category-form hide">
-          <h5>Not a Student</h5>
-          <!-- Add specific fields and descriptions for Not a Student here -->
+      <!-- Non Thapar Student Form -->
+      <div id="non-thapar-student" class="category-form hide">
+        <h5>Non Thapar Student</h5>
+        <h5>Price for entry:- <b>Rs. 400/-</b></h5>
+        <!-- Add specific fields and descriptions for Non Thapar Student here -->
+        <div class="input-field col s12">
+          <input id="clgName" type="text" class="validate" />
+          <label for="clgName">Are you a college student? (if yes, enter college name)</label>
         </div>
-
-        <!-- Common fields for all categories -->
+        <div class="input-field col s12">
+          <input id="sclName" type="text" class="validate" />
+          <label for="sclName">Are you a school student? (if yes, enter school name)</label>
+        </div>
         <div class="file-field input-field">
           <div class="btn">
-            <span>Upload Screenshot</span>
+            <span>Upload School/College ID</span>
+            <input type="file" accept="image/*" />
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Not a Student Form -->
+      <div id="not-a-student" class="category-form hide">
+        <h5>Not a Student</h5>
+        <h5>Price for entry:- <b>Rs. 500/</b>-</h5>
+        <!-- Add specific fields and descriptions for Not a Student here -->
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Upload Government ID Proof</span>
+            <input type="file" accept="image/*" />
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Common fields for all categories -->
+      <div class="row">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Upload Payment Screenshot</span>
             <input type="file" accept="image/*" />
           </div>
           <div class="file-path-wrapper">
@@ -149,82 +227,94 @@
           </div>
         </div>
 
-        <div class="file-field input-field">
-          <div class="btn">
-            <span>Upload ID</span>
-            <input type="file" accept="image/*" />
-          </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" />
-          </div>
+        <div class="input-field col s12">
+          <input id="trnID" type="number" class="validate" />
+          <label for="trnID">Transaction ID</label>
         </div>
+        <div class="input-field col s12">
+          <input id="trnPhone" type="tel" class="validate" />
+          <label for="trnPhone">Phone Number through which the Payment was made</label>
+        </div>
+        <div class="input-field col s12">
+          <select id="gateway">
+            <option value="" disabled selected>Choose your payment gateway</option>
+            <option value="Paytm">Paytm</option>
+            <option value="Phonepe">Phonepe</option>
+            <option value="Gpay">Gpay</option>
+            <option value="Other">Other</option>
+          </select>
+          <label>Payment Gateway Used</label>
+        </div>
+        <div class="input-field col s12">
+          <select id="distance">
+            <option value="" disabled selected>Choose your running distance</option>
+            <option value="5km">5km</option>
+            <option value="10km">10km</option>
+          </select>
+          <label>Running Distance</label>
+        </div>
+      </div>
 
-        <!-- Submit Button -->
-        <button
-          class="btn waves-effect waves-light"
-          type="submit"
-          name="action"
-        >
-          Submit
-          <i class="material-icons right">send</i>
-        </button>
-      </form>
-    </div>
+      <!-- Submit Button -->
+      <button class="btn waves-effect waves-light" type="submit" name="action">
+        Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
+  </div>
 
-    <!-- Initialize Materialize CSS components -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        M.AutoInit();
-      });
 
-      // Show/hide the appropriate category form based on user selection
-      const selectCategory = () => {
-        const category = document.getElementById("category").value;
-        document
-          .querySelectorAll(".category-form")
-          .forEach((form) => form.classList.add("hide"));
-        document.getElementById(category).classList.remove("hide");
-      };
+  <!-- Initialize Materialize CSS components -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      M.AutoInit();
+    });
 
-      // Add an event listener to the category selection input
+    // Show/hide the appropriate category form based on user selection
+    const selectCategory = () => {
+      const category = document.getElementById("category").value;
       document
-        .getElementById("category")
-        .addEventListener("change", selectCategory);
-      selectCategory(); // Initialize based on the default selection
-    </script>
+        .querySelectorAll(".category-form")
+        .forEach((form) => form.classList.add("hide"));
+      document.getElementById(category).classList.remove("hide");
+    };
 
-    <hr />
+    // Add an event listener to the category selection input
+    document
+      .getElementById("category")
+      .addEventListener("change", selectCategory);
+    selectCategory(); // Initialize based on the default selection
+  </script>
 
-    <div class="center-align">
-      <img src="/footer.png" class="responsive-img" style="height:45vh" />
+  <hr />
+
+  <div class="center-align">
+    <img src="/footer.png" class="responsive-img" style="height:45vh" />
+  </div>
+
+  <div id="error-modal" class="modal">
+    <div class="modal-content">
+      <h4>Error</h4>
+      <p id="error-message"></p>
     </div>
-
-    <div id="error-modal" class="modal">
-      <div class="modal-content">
-        <h4>Error</h4>
-        <p id="error-message"></p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-          >OK</a
-        >
-      </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
     </div>
+  </div>
 
-    <!-- Add a modal for success messages -->
-    <div id="success-modal" class="modal">
-      <div class="modal-content">
-        <h4>Success</h4>
-        <p>Registered successfully.</p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-          >OK</a
-        >
-      </div>
+  <!-- Add a modal for success messages -->
+  <div id="success-modal" class="modal">
+    <div class="modal-content">
+      <h4>Success</h4>
+      <p>Registered successfully.</p>
     </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+  </div>
+  <script src="/worker.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </body>
 </html>
