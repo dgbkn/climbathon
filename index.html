@@ -3,100 +3,228 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Climbathon</title>
+    <title>Register For Valhalla : CCS</title>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-image: url("/bg.webp");
+        background-color: rgba(0, 0, 0, 0.6);
+        background-blend-mode: color;
+      }
+      * {
+        color: white;
+      }
+
+      .modal {
+        background-color: rgb(30, 30, 30);
+      }
+      .roboButton {
+        padding: 0.75em 2em;
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        text-shadow: 0 5px 20px rgba(192, 36, 0, 0.4),
+          0 2px 2px rgba(192, 36, 0, 0.4);
+        background-image: radial-gradient(
+          100% 75% at 50% 100%,
+          #fed262 0%,
+          #c40900 100%
+        );
+        border: none;
+        border-radius: 100px;
+        box-shadow: inset 0 3px 15px 0 rgba(174, 32, 0, 1),
+          inset 0 -3px 0 0 rgba(254, 210, 98, 1),
+          inset 0 40px 0 0 rgba(254, 210, 98, 0.4),
+          inset 0 20px 20px 0 rgba(248, 191, 69, 1), 0 0 0 8px #000,
+          0 9px 0 0 #444, 0 0 20px 0 rgba(254, 210, 98, 0.4),
+          0 40px 20px -30px rgba(254, 210, 98, 0.2);
+
+        transition: 0.2s ease-in-out;
+        &:hover {
+          cursor: pointer;
+          background-image: radial-gradient(
+            100% 75% at 50% 100%,
+            #f7b940 0%,
+            #a20700 100%
+          );
+        }
+
+        &:focus,
+        &:active {
+          outline: none;
+          color: #f9e3bf;
+          background-image: radial-gradient(
+            100% 75% at 50% 100%,
+            #f58725 0%,
+            #850600 100%
+          );
+          box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.4),
+            inset 0 0 10px rgba(133, 6, 0, 1),
+            inset 0 3px 15px 0 rgba(174, 32, 0, 1),
+            inset 0 40px 0 0 rgba(254, 210, 98, 0.3),
+            inset 0 20px 20px 0 rgba(248, 191, 69, 0.75), 0 0 0 8px #000,
+            0 9px 0 0 #444;
+        }
+      }
+    </style>
   </head>
   <body>
+    <div class="center-align">
+      <h5 style="color: white">CCS PRESENTS</h5>
 
-    <!DOCTYPE html>
-<html>
-<head>
-    <title>Student Registration Form</title>
-    <!-- Add Materialize CSS and JavaScript CDN links here -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-</head>
-<body>
+      <div class="row imageBox">
+        <img
+          src="/header.png"
+          class="responsive-img col s12 l4 m8 offset-l4 offset-m3"
+        />
+      </div>
+    </div>
+
+    <hr />
+
     <div class="container">
-        <h3>Student Registration Form</h3>
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
-                    <label for="email">Email</label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="phone" type="tel" class="validate">
-                    <label for="phone">Phone Number</label>
-                </div>
-            </div>
+      <h3>Student Registration Form</h3>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate" />
+            <label for="email">Email</label>
+          </div>
+          <div class="input-field col s12">
+            <input id="phone" type="tel" class="validate" />
+            <label for="phone">Phone Number</label>
+          </div>
+        </div>
 
-            <!-- Thapar Student Form -->
-            <div id="thapar-student" class="category-form">
-                <h5>Thapar Student</h5>
-                <!-- Add specific fields and descriptions for Thapar Student here -->
-            </div>
+        <!-- Category Selection Dropdown -->
+        <div class="input-field col s12">
+          <select id="category">
+            <option value="" disabled selected>Choose your category</option>
+            <option value="thapar">Thapar Student</option>
+            <option value="non-thapar">Non Thapar Student</option>
+            <option value="not-a-student">Not a Student</option>
+          </select>
+          <label>Category</label>
+        </div>
 
-            <!-- Non Thapar Student Form -->
-            <div id="non-thapar-student" class="category-form">
-                <h5>Non Thapar Student</h5>
-                <!-- Add specific fields and descriptions for Non Thapar Student here -->
-            </div>
+        <!-- Thapar Student Form -->
+        <div id="thapar-student" class="category-form hide">
+          <h5>Thapar Student</h5>
+          <!-- Add specific fields and descriptions for Thapar Student here -->
+        </div>
 
-            <!-- Not a Student Form -->
-            <div id="not-a-student" class="category-form">
-                <h5>Not a Student</h5>
-                <!-- Add specific fields and descriptions for Not a Student here -->
-            </div>
+        <!-- Non Thapar Student Form -->
+        <div id="non-thapar-student" class="category-form hide">
+          <h5>Non Thapar Student</h5>
+          <!-- Add specific fields and descriptions for Non Thapar Student here -->
+        </div>
 
-            <!-- Common fields for all categories -->
-            <div class="file-field input-field">
-                <div class="btn">
-                    <span>Upload Screenshot</span>
-                    <input type="file" accept="image/*">
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                </div>
-            </div>
+        <!-- Not a Student Form -->
+        <div id="not-a-student" class="category-form hide">
+          <h5>Not a Student</h5>
+          <!-- Add specific fields and descriptions for Not a Student here -->
+        </div>
 
-            <div class="file-field input-field">
-                <div class="btn">
-                    <span>Upload ID</span>
-                    <input type="file" accept="image/*">
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                </div>
-            </div>
+        <!-- Common fields for all categories -->
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Upload Screenshot</span>
+            <input type="file" accept="image/*" />
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" />
+          </div>
+        </div>
 
-            <!-- Submit Button -->
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                <i class="material-icons right">send</i>
-            </button>
-        </form>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Upload ID</span>
+            <input type="file" accept="image/*" />
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" />
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          class="btn waves-effect waves-light"
+          type="submit"
+          name="action"
+        >
+          Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </form>
     </div>
 
     <!-- Initialize Materialize CSS components -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            M.AutoInit();
-        });
+      document.addEventListener("DOMContentLoaded", function () {
+        M.AutoInit();
+      });
 
-        // Show/hide the appropriate category form based on user selection
-        const selectCategory = () => {
-            const category = document.getElementById('category').value;
-            document.querySelectorAll('.category-form').forEach(form => form.style.display = 'none');
-            document.getElementById(category).style.display = 'block';
-        };
+      // Show/hide the appropriate category form based on user selection
+      const selectCategory = () => {
+        const category = document.getElementById("category").value;
+        document
+          .querySelectorAll(".category-form")
+          .forEach((form) => form.classList.add("hide"));
+        document.getElementById(category).classList.remove("hide");
+      };
 
-        // Add an event listener to the category selection input
-        document.getElementById('category').addEventListener('change', selectCategory);
-        selectCategory(); // Initialize based on the default selection
+      // Add an event listener to the category selection input
+      document
+        .getElementById("category")
+        .addEventListener("change", selectCategory);
+      selectCategory(); // Initialize based on the default selection
     </script>
-</body>
-</html>
 
+    <hr />
 
+    <div class="center-align">
+      <img src="/footer.png" class="responsive-img" />
+    </div>
 
+    <div id="error-modal" class="modal">
+      <div class="modal-content">
+        <h4>Error</h4>
+        <p id="error-message"></p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+          >OK</a
+        >
+      </div>
+    </div>
+
+    <!-- Add a modal for success messages -->
+    <div id="success-modal" class="modal">
+      <div class="modal-content">
+        <h4>Success</h4>
+        <p>Registered successfully.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+          >OK</a
+        >
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
