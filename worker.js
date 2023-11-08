@@ -54,7 +54,7 @@ async function handleRequest(request) {
             }
             var studentIdUrl = 'N/A'; // image
             var govIdUrl = 'N/A'; // image
-            var ssPaymentUrl = 'N/A';
+            var ssPaymentUrl =  formData.get('ssPaymentUrl') || 'N/A';
 
 
             if (formData.get('category') === 'Non Thapar Student') {
