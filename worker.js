@@ -100,7 +100,7 @@ async function handleRequest(request) {
                 }
             }
 
-            if (formData.get('ssPayment') == "N/A") {
+            if (ssPaymentUrl == "N/A") {
                 const errorResponse = {
                     error: `Missing required field: ssPayment`
                 };
