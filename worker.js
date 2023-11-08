@@ -16,7 +16,7 @@ function standardizePhoneNumber(phoneNumber) {
 }
 
 function isValidIndianPhoneNumber(phoneNumber) {
-    const regex = /^(?:\+91|91)?[0-9]{10}$/;
+    const regex = /^[0-9]{10}$/;
     return regex.test(phoneNumber);
 }
 
