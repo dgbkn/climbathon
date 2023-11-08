@@ -1,6 +1,8 @@
 addEventListener('fetch', (event) => {
     event.respondWith(handleRequest(event.request));
   });
+
+  
   
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
@@ -40,6 +42,19 @@ addEventListener('fetch', (event) => {
               },
             });
           }
+        }
+
+        if(formData.get('category') === 'Non Thapar Student' && !formData.has('sclName')) {
+            const errorResponse = {
+                error: `Missing required field: sclName`,
+            };
+            return new Response(JSON.stringify(errorResponse), {
+                status: 400, // Bad Request
+                headers: {
+                'Content-Type': 'application/json',
+                ...corsHeaders,
+                },
+            });
         }
   
         // Optional fields
