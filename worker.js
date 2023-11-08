@@ -16,7 +16,8 @@ function standardizePhoneNumber(phoneNumber) {
 }
 
 function isValidIndianPhoneNumber(phoneNumber) {
-    return phoneNumber.match(/\d/g).length===10;
+    const regex = /^[0-9]{10}$/;
+    return regex.test(phoneNumber);
 }
 
 async function handleRequest(request) {
@@ -110,8 +111,6 @@ async function handleRequest(request) {
                         ... corsHeaders
                     }
                 });
-            } else {
-                ssPaymentUrl = formData.get('ssPayment');
             }
 
             // Optional fields
@@ -124,21 +123,10 @@ async function handleRequest(request) {
             // Validate phone number
             const contact = standardizePhoneNumber(formData.get('phone'));
             const trnPhone = standardizePhoneNumber(formData.get('trnPhone'));
-            // if (! isValidIndianPhoneNumber(contact) && ! isValidIndianPhoneNumber(trnPhone)) {
-            //     const errorResponse = {
-            //         error: 'Invalid phone number'
-            //     };
-            //     return new Response(JSON.stringify(errorResponse), {
-            //         status: 400, // Bad Request
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //             ... corsHeaders
-            //         }
-            //     });
-            // }
+
 
             // Call the submitToGoogleForm function with the verified and formatted data
-            await submitToGoogleForm(formData.get('name'), formData.get('email'), formData.get('age'), contact, clgName, schoolName, studentIdUrl, govIdUrl, rNo, ssPaymentUrl, formData.get('trnID'), trnPhone, formData.get('gender'), "Thapar Student", formData.get('gateway'), formData.get('distance'));
+            await submitToGoogleForm(formData.get('name'), formData.get('email'), formData.get('age'), contact, clgName, schoolName, studentIdUrl, govIdUrl, rNo, ssPaymentUrl, formData.get('trnID'), trnPhone, formData.get('gender'), formData.get('category'), formData.get('gateway'), formData.get('distance'));
 
             const successResponse = {
                 success: 'Form data received and submitted successfully'
