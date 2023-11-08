@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Climbathon</title>
+  </head>
+  <body>
+
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+    <!-- Add Materialize CSS and JavaScript CDN links here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+    <div class="container">
+        <h3>Student Registration Form</h3>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="phone" type="tel" class="validate">
+                    <label for="phone">Phone Number</label>
+                </div>
+            </div>
+
+            <!-- Thapar Student Form -->
+            <div id="thapar-student" class="category-form">
+                <h5>Thapar Student</h5>
+                <!-- Add specific fields and descriptions for Thapar Student here -->
+            </div>
+
+            <!-- Non Thapar Student Form -->
+            <div id="non-thapar-student" class="category-form">
+                <h5>Non Thapar Student</h5>
+                <!-- Add specific fields and descriptions for Non Thapar Student here -->
+            </div>
+
+            <!-- Not a Student Form -->
+            <div id="not-a-student" class="category-form">
+                <h5>Not a Student</h5>
+                <!-- Add specific fields and descriptions for Not a Student here -->
+            </div>
+
+            <!-- Common fields for all categories -->
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>Upload Screenshot</span>
+                    <input type="file" accept="image/*">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>Upload ID</span>
+                    <input type="file" accept="image/*">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+
+    <!-- Initialize Materialize CSS components -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            M.AutoInit();
+        });
+
+        // Show/hide the appropriate category form based on user selection
+        const selectCategory = () => {
+            const category = document.getElementById('category').value;
+            document.querySelectorAll('.category-form').forEach(form => form.style.display = 'none');
+            document.getElementById(category).style.display = 'block';
+        };
+
+        // Add an event listener to the category selection input
+        document.getElementById('category').addEventListener('change', selectCategory);
+        selectCategory(); // Initialize based on the default selection
+    </script>
+</body>
+</html>
+
+
+
+  </body>
+</html>
