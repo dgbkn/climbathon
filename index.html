@@ -154,9 +154,9 @@
         <div class="input-field col s12">
           <select name="category" id="category">
             <option value="" disabled selected>Choose your category</option>
-            <option value="thapar-student">Thapar Student</option>
-            <option value="non-thapar-student">Non Thapar Student</option>
-            <option value="not-a-student">Not a Student</option>
+            <option value="Thapar Student">Thapar Student</option>
+            <option value="Non Thapar Student">Non Thapar Student</option>
+            <option value="Not a Student">Not a Student</option>
           </select>
           <label>Category</label>
         </div>
@@ -321,6 +321,71 @@
         M.toast({ html: "Error: " + error.message, classes: "bold-toast red" });
       }
     }
+
+
+
+
+    const imageFields = ['studentIdUrl', 'govIdUrl', 'ssPayment'];
+    for (const field of imageFields) {
+      const fileInput = document.getElementById(field);
+      if (fileInput.files.length > 0) {
+        const progressElement = document.getElementById(`${field}Progress`);
+        try {
+          const imageUrl = await uploadImage(fileInput.files[0], progressElement);
+          formData.set(field, imageUrl);
+        } catch (error) {
+          M.toast({ html: `Error uploading ${field}: ${error.message}`, classes: 'bold-toast red' });
+          return;
+        }
+      }
+    }
+
+
+
+
+
+
+
+    const imgbbApiKey = 'e87add19a429b1c60823e9800546e67b';
+
+    // Define ImgBB API endpoint
+    const imgbbEndpoint = 'https://api.imgbb.com/1/upload';
+
+    // Function to upload an image and return the image URL
+    const uploadImage = async (file, progressElement) => {
+      return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', imgbbEndpoint, true);
+
+        xhr.upload.onprogress = (event) => {
+          if (event.lengthComputable) {
+            const progress = (event.loaded / event.total) * 100;
+            progressElement.style.width = `${progress}%`;
+          }
+        };
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            resolve(response.data.url);
+          } else {
+            reject(new Error('Image upload failed'));
+          }
+        };
+
+        xhr.onerror = () => {
+          reject(new Error('Image upload failed'));
+        };
+
+        const formData = new FormData();
+        formData.append('key', imgbbApiKey);
+        formData.append('image', file);
+
+        xhr.send(formData);
+      });
+    };
+
+
 
   </script>
 

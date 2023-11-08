@@ -43,7 +43,7 @@ addEventListener('fetch', (event) => {
         }
   
         // Optional fields
-        const clgName = formData.get('clgName');
+        const clgName = formData.get('clgName') || "N/A";
         const schoolName = formData.get('sclName');
         const rNo = formData.get('rno');
         const studentIdUrl = formData.get('studentIdUrl') || ''; // image
@@ -124,7 +124,7 @@ addEventListener('fetch', (event) => {
   }
 
   
-  
+
 async function submitToGoogleForm(
   name,
   email,
