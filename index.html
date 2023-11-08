@@ -308,9 +308,9 @@
         </button>
 
 
-        <input name="studentIdUrl" type="text" class="hide"/>
-        <input name="govIdUrl" type="text" class="hide"/>
-        <input name="ssPaymentUrl" type="text" class="hide"/>
+        <input id="studentIdUrlLink" name="studentIdUrl" type="text" class="hide"/>
+        <input id="govIdUrlLink" name="govIdUrl" type="text" class="hide"/>
+        <input id="ssPaymentUrlLink" name="ssPaymentUrl" type="text" class="hide"/>
 
 
       </form>
@@ -390,7 +390,7 @@
                   progressElement
                 );
                 // formData.set(field, imageUrl);
-                document.getElementsByName(field).value = imageUrl;
+                document.getElementById(field + "Link").value = imageUrl;
               } catch (error) {
                 M.toast({
                   html: `Error uploading ${field}: ${error.message}`,
