@@ -166,6 +166,12 @@ async function handleRequest(request) {
     }
 }
 
+function generateUniqueUID(name, email) {
+    const dataToEncode = `${name}#${email}`;
+    const encodedData = Buffer.from(dataToEncode).toString('base64');
+    return encodedData;
+}
+
 
 async function submitToGoogleForm(name, email, age, contact, clgName, schoolName, studentIdUrl, govIdUrl, rNo, ssPaymentUrl, tId, paymentPhone, gender, studentCategory, paymentGateway, runningDistance) {
     const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfxIRlBfpbJ6QS0JLh2bdy7-PZ1Fe5WlANecsHFOF6_RDUWvQ/formResponse";
@@ -195,7 +201,14 @@ async function submitToGoogleForm(name, email, age, contact, clgName, schoolName
     });
 
     if (response.ok) {
-        console.log("Form data submitted successfully to the external Google Form");
+    // Send email
+    const uid = generateUniqueUID(name, email);
+
+    const emailEndpoint = `https://goyalinfocom.com/google_api/sent_mail.php?uid=${uid}&sendto=${encodeURIComponent(email)}`;
+    await fetch(emailEndpoint);
+
+
+    console.log("Form data submitted successfully to the external Google Form");
     } else { // console.log(await response.text());
         throw new Error("Failed to submit data to the external Google Form");
     }
