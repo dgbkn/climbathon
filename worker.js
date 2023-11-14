@@ -31,11 +31,8 @@ async function handleRequest(request) {
                 'email',
                 'age',
                 'phone',
-                'trnID',
-                'trnPhone',
                 'gender',
                 'category',
-                'gateway',
                 'distance'
             ];
             for (const field of requiredFields) {
