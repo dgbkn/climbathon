@@ -36,7 +36,7 @@ async function handleRequest(request) {
                 'distance'
             ];
             for (const field of requiredFields) {
-                if (! formData.has(field)) {
+                if (! formData.has(field) || formData.get(field).trim() === '') {
                     const errorResponse = {
                         error: `Missing required field: ${field}`
                     };
@@ -49,66 +49,95 @@ async function handleRequest(request) {
                     });
                 }
             }
-            var studentIdUrl = 'N/A'; // image
-            var govIdUrl = 'N/A'; // image
+
+            var studentIdUrl =formData.get("studentIdUrl") || 'N/A'; // image
+            var govIdUrl =formData.get("govIdUrl") || 'N/A'; // image
             var ssPaymentUrl = formData.get("ssPaymentUrl") || 'N/A';
 
 
-            if (formData.get('category') === 'Non Thapar Student') {
-                if (formData.get('clgName') && formData.get('sclName')) {
-                    const errorResponse = {
-                        error: `Too many fields filled: clgName and sclName`
-                    };
-                    return new Response(JSON.stringify(errorResponse), {
-                        status: 400, // Bad Request
-                        headers: {
-                            'Content-Type': 'application/json',
-                            ... corsHeaders
-                        }
-                    });
-                } else if (! formData.get('clgName') && ! formData.get('sclName')) {
-                    const errorResponse = {
-                        error: `Missing required field: clgName or sclName`
-                    };
-                    return new Response(JSON.stringify(errorResponse), {
-                        status: 400, // Bad Request
-                        headers: {
-                            'Content-Type': 'application/json',
-                            ... corsHeaders
-                        }
-                    });
-                } else {
-                    studentIdUrl = formData.get('studentIdUrl');
-                }
-            } else if (formData.get('category') === 'Not a Student') {
-                if (! formData.get('govIdUrl')) {
-                    const errorResponse = {
-                        error: `Missing required field: govIdUrl`
-                    };
-                    return new Response(JSON.stringify(errorResponse), {
-                        status: 400, // Bad Request
-                        headers: {
-                            'Content-Type': 'application/json',
-                            ... corsHeaders
-                        }
-                    });
-                } else {
-                    govIdUrl = formData.get('govIdUrl');
-                }
-            }
-
-            if (formData.get('ssPayment') == "N/A") {
-                const errorResponse = {
-                    error: `Missing required field: ssPayment`
-                };
-                return new Response(JSON.stringify(errorResponse), {
-                    status: 400, // Bad Request
-                    headers: {
-                        'Content-Type': 'application/json',
-                        ... corsHeaders
+            switch (formData.get('category')) {
+                case 'Thapar Student':
+                    if (! formData.get('rno')) {
+                        const errorResponse = {
+                            error: `Missing required field: Roll No.`
+                        };
+                        return new Response(JSON.stringify(errorResponse), {
+                            status: 400, // Bad Request
+                            headers: {
+                                'Content-Type': 'application/json',
+                                ... corsHeaders
+                            }
+                        });
                     }
-                });
+
+                    if (!formData.get('studentIdUrl')) {
+                        const errorResponse = {
+                            error: `Missing required field: Student ID`
+                        };
+                        return new Response(JSON.stringify(errorResponse), {
+                            status: 400, // Bad Request
+                            headers: {
+                                'Content-Type': 'application/json',
+                                ... corsHeaders
+                            }
+                        });
+                    }
+                    break;
+
+                    case 'Non Thapar Student':
+                        //check for payment fields
+                        if (! formData.get('trnID')) {
+                            const errorResponse = {
+                                error: `Missing required field: Transaction ID`
+                            };
+                            return new Response(JSON.stringify(errorResponse), {
+                                status: 400, // Bad Request
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    ... corsHeaders
+                                }
+                            });
+                        }
+                        if (! formData.get('trnPhone')) {
+                            const errorResponse = {
+                                error: `Missing required field: Transaction Phone`
+                            };
+                            return new Response(JSON.stringify(errorResponse), {
+                                status: 400, // Bad Request
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    ... corsHeaders
+                                }
+                            });
+                        }
+                        if (! formData.get('ssPaymentUrl')) {
+                            const errorResponse = {
+                                error: `Missing required field: Payment Screenshot`
+                            };
+                            return new Response(JSON.stringify(errorResponse), {
+                                status: 400, // Bad Request
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    ... corsHeaders
+                                }
+                            });
+                        }
+                        if (! formData.get('gateway')) {
+                            const errorResponse = {
+                                error: `Missing required field: Payment Gateway`
+                            };
+                            return new Response(JSON.stringify(errorResponse), {
+                                status: 400, // Bad Request
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    ... corsHeaders
+                                }
+                            });
+                        }
+
+                        break;
             }
+            
 
             // Optional fields
             const clgName = formData.get('clgName') || "N/A";
@@ -178,19 +207,19 @@ async function submitToGoogleForm(name, email, age, contact, clgName, schoolName
     urlencoded.append("entry.807911514", name);
     urlencoded.append("entry.1190147616", email);
     urlencoded.append("entry.519431154", age);
-    urlencoded.append("entry.1592595101", contact);
-    urlencoded.append("entry.1193926513", clgName);
-    urlencoded.append("entry.875091108", schoolName);
-    urlencoded.append("entry.31134898", studentIdUrl);
-    urlencoded.append("entry.463664041", govIdUrl);
-    urlencoded.append("entry.1672731479", rNo);
-    urlencoded.append("entry.335192038", ssPaymentUrl);
-    urlencoded.append("entry.934455295", tId);
-    urlencoded.append("entry.621779747", paymentPhone);
-    urlencoded.append("entry.1182897846", gender);
-    urlencoded.append("entry.316715673", studentCategory);
-    urlencoded.append("entry.149016326", paymentGateway);
-    urlencoded.append("entry.1989279340", runningDistance);
+    urlencoded.append("entry.1592595101", contact || "n/a");
+    urlencoded.append("entry.1193926513", clgName || "n/a");
+    urlencoded.append("entry.875091108", schoolName || "n/a");
+    urlencoded.append("entry.31134898", studentIdUrl || "n/a");
+    urlencoded.append("entry.463664041", govIdUrl || "n/a");
+    urlencoded.append("entry.1672731479", rNo || "n/a");
+    urlencoded.append("entry.335192038", ssPaymentUrl || "n/a");
+    urlencoded.append("entry.934455295", tId || "n/a");
+    urlencoded.append("entry.621779747", paymentPhone || "n/a");
+    urlencoded.append("entry.1182897846", gender || "n/a");
+    urlencoded.append("entry.316715673", studentCategory || "n/a");
+    urlencoded.append("entry.149016326", paymentGateway || "n/a");
+    urlencoded.append("entry.1989279340", runningDistance || "n/a");
 
     const response = await fetch(formUrl, {
         method: "POST",
@@ -207,6 +236,6 @@ async function submitToGoogleForm(name, email, age, contact, clgName, schoolName
 
     console.log("Form data submitted successfully to the external Google Form");
     } else { // console.log(await response.text());
-        throw new Error("Failed to submit data to the external Google Form");
+        throw new Error("Failed to submit data some error occurred");
     }
 }
