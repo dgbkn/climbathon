@@ -392,7 +392,8 @@
       }
 
       async function startImageFieldsInit() {
-        const imageFields = ["studentIdUrl", "govIdUrl", "ssPaymentUrl"];
+        const imageFields = ["studentIdUrl", "ssPaymentUrl"];
+    //const imageFields = ["studentIdUrl", "govIdUrl", "ssPaymentUrl"];
         for (const field of imageFields) {
           const fileInput = document.getElementById(field);
           fileInput.addEventListener("change", async (event) => {

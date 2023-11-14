@@ -222,9 +222,9 @@ async function submitToGoogleForm(
   urlencoded.append("entry.934455295", tId || "n/a");
   urlencoded.append("entry.621779747", paymentPhone || "n/a");
   urlencoded.append("entry.1182897846", gender || "n/a");
-  urlencoded.append("entry.316715673", studentCategory || "n/a");
-  urlencoded.append("entry.149016326", paymentGateway || "n/a");
-  urlencoded.append("entry.1989279340", runningDistance || "n/a");
+  urlencoded.append("entry.316715673", studentCategory || "Non Thapar Student");
+  urlencoded.append("entry.149016326", paymentGateway || "Other");
+  urlencoded.append("entry.1989279340", runningDistance || "5km");
 
   const response = await fetch(formUrl, {
     method: "POST",
@@ -243,6 +243,6 @@ async function submitToGoogleForm(
     console.log("Form data submitted successfully to the external Google Form");
   } else {
     // console.log(await response.text());
-    throw new Error("Failed to submit data some error occurred");
+    throw new Error("Failed to submit data some error occurred" +  await response.text());
   }
 }
