@@ -172,7 +172,7 @@
               <option value="" disabled selected>Choose your category</option>
               <option value="Thapar Student">Thapar Student</option>
               <option value="Non Thapar Student">Non Thapar Student</option>
-              <option value="Not a Student">Not a Student</option>
+              <!-- <option value="Not a Student">Not a Student</option> -->
             </select>
             <label>Category</label>
           </div>
@@ -181,37 +181,12 @@
         <!-- Thapar Student Form -->
         <div id="Thapar Student" class="category-form hide">
           <h5>Thapar Student</h5>
-          <h5>Price for entry:- <b>Rs. 300/-</b></h5>
-          <img src="/qr.jpeg" />
+          <!-- <h5>Price for entry:- <b>Rs. 300/-</b></h5>
+          <img src="/qr.jpeg" /> -->
           <!-- Add specific fields and descriptions for Thapar Student here -->
-          <div class="input-field col s12">
-            <input name="rno" id="rno" type="number" class="validate" />
-            <label for="rno">Roll Number</label>
-          </div>
-        </div>
-
-        <!-- Non Thapar Student Form -->
-        <div id="Non Thapar Student" class="category-form hide">
-          <h5>Non Thapar Student</h5>
-          <h5>Price for entry:- <b>Rs. 400/-</b></h5>
-          <img src="/qr.jpeg" />
-          <!-- Add specific fields and descriptions for Non Thapar Student here -->
-          <div class="input-field col s12">
-            <input name="clgName" id="clgName" type="text" class="validate" />
-            <label for="clgName"
-              >Are you a college student? (if yes, enter college name)</label
-            >
-          </div>
-          <div class="input-field col s12">
-            <input name="sclName" id="sclName" type="text" class="validate" />
-            <label for="sclName"
-              >Are you a school student? (if yes, enter school name)</label
-            >
-          </div>
-
           <div class="file-field input-field">
             <div class="btn">
-              <span>Upload School/College ID</span>
+              <span>Upload College ID</span>
               <input type="file" id="studentIdUrl" accept="image/*" />
             </div>
             <div class="file-path-wrapper">
@@ -224,30 +199,38 @@
           <div class="progress hide" id="studentIdUrlProgress">
             <div class="indeterminate"></div>
           </div>
+
+          <div class="input-field col s12">
+            <input name="rno" id="rno" type="number" class="validate" />
+            <label for="rno">Roll Number</label>
+          </div>
         </div>
 
-        <!-- Not a Student Form -->
-        <div id="Not a Student" class="category-form hide">
-          <h5>Not a Student</h5>
-          <h5>Price for entry:- <b>Rs. 500/</b>-</h5>
+        <!-- Non Thapar Student Form -->
+        <div id="Non Thapar Student" class="category-form hide">
+          <h5>Non Thapar Student</h5>
+          <h5>Price for entry:- <b>5KM : Rs. 400/-
+            <br>10KM : Rs.600/-
+          </b>
+          
+          </h5>
           <img src="/qr.jpeg" />
-          <!-- Add specific fields and descriptions for Not a Student here -->
-          <div class="file-field input-field">
-            <div class="btn">
-              <span>Upload Government ID Proof</span>
-              <input type="file" id="govIdUrl" accept="image/*" />
-            </div>
-            <div class="file-path-wrapper">
-              <input class="file-path validate" type="text" />
-            </div>
+          <!-- Add specific fields and descriptions for Non Thapar Student here -->
+          <!-- <div class="input-field col s12">
+            <input name="clgName" id="clgName" type="text" class="validate" />
+            <label for="clgName"
+              >Are you a college student? (if yes, enter college name)</label
+            >
           </div>
+          <div class="input-field col s12">
+            <input name="sclName" id="sclName" type="text" class="validate" />
+            <label for="sclName"
+              >Are you a school student? (if yes, enter school name)</label
+            >
+          </div> -->
 
-          <div class="progress hide" id="govIdUrlProgress">
-            <div class="indeterminate"></div>
-          </div>
-        </div>
 
-        <!-- Common fields for all categories -->
+               <!-- Payment -->
         <div class="row">
           <div class="file-field input-field">
             <div class="btn">
@@ -264,8 +247,6 @@
           <div class="progress hide" id="ssPaymentUrlProgress">
             <div class="indeterminate"></div>
           </div>
-
-
           <div class="input-field col s12">
             <input name="trnID" id="trnID" type="number" class="validate" />
             <label for="trnID">Transaction ID</label>
@@ -286,6 +267,40 @@
             </select>
             <label>Payment Gateway Used</label>
           </div>
+
+        <!-- Payment -->
+
+
+
+        </div>
+
+        <!-- Not a Student Form -->
+        <!-- <div id="Not a Student" class="category-form hide">
+          <h5>Not a Student</h5>
+          <h5>Price for entry:- <b>Rs. 500/</b>-</h5>
+          <img src="/qr.jpeg" /> -->
+          <!-- Add specific fields and descriptions for Not a Student here -->
+          <!-- <div class="file-field input-field">
+            <div class="btn">
+              <span>Upload Government ID Proof</span>
+              <input type="file" id="govIdUrl" accept="image/*" />
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" />
+            </div>
+          </div>
+
+          <div class="progress hide" id="govIdUrlProgress">
+            <div class="indeterminate"></div>
+          </div>
+        </div> -->
+
+
+
+
+
+
+        <!-- Common fields for all categories -->
           <div class="input-field col s12">
             <select name="distance" id="distance">
               <option value="" disabled selected>Choose your running distance
