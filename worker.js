@@ -69,7 +69,7 @@ async function handleRequest(request) {
             });
           }
 
-          if (!formData.get("studentIdUrl") || formData.get("studentIdUrl") === "N/A") {
+          if (!formData.get("studentIdUrl")) {
             const errorResponse = {
               error: `Missing required field: Student ID`,
             };
