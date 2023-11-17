@@ -26,6 +26,7 @@
     <div id="CURRENTSCAN">
 
     </div>
+
     <div id="reader"></div>
 
     <ul class="collapsible" id="DATAHERE">
@@ -35,6 +36,8 @@
 
 
     <script>
+        var dataME;
+
         function checkNa(val) {
             if (val == "n/a" || val == "N/A" || val == null || val == "") {
                 return true;
@@ -48,6 +51,7 @@
             var items = [];
 
             console.log(data);
+            dataME = data;
 
 
             $.each(data, function (key, val) {
@@ -86,19 +90,55 @@
             //     html: items.join( "" )
             //   }).appendTo( "body" );
         });
-    </script>
-    <script>
+
 
         function onScanSuccess(decodedText, decodedResult) {
             // handle the scanned code as you like, for example:
             console.log(`Code matched = ${decodedText}`, decodedResult);
+
+
+            var namehashemail = decodedText.replace("DEMO:", '').trim();
+            namehashemail = atob(namehashemail);
+            var [name,email] = namehashemail.split("#");
+
+            var val = dataME.filter(obj => {
+                return obj["Full Name"] == name && obj["Email Id"] == email
+                });
+
+
+            $("CURRENTSCAN").html(`
+            <li>
+         <div class="collapsible-header"><b>${val['Full Name']}</b></div>
+         <div class="collapsible-body">
+            
+            <span>Email Id: ${val['Email Id']}.</span><br>
+            <span>Contact Number: ${val['Contact Number']}.</span><br>
+            <span>Age: ${val['Age']}.</span><br>
+            <span>Roll Number: ${val['Roll Number']}.</span><br>
+            <span>College Student (if yes add college name): ${val['College Student (if yes add college name)']}.</span><br>
+            <span>Gender: ${val['Gender']}.</span><br>
+            <span>Payment Gateway used: ${val['Payment Gateway used']}.</span><br>
+            <span>Phone no. through which payment is made: ${val['Phone no. through which payment is made']}.</span><br>
+            <span>Running Distance: ${val['Running Distance']}.</span><br>
+            <span>School Student (if yes add school name): ${val['School Student (if yes add school name)']}.</span><br>
+
+            <span>Govt ID URL: <img class="ss" src="${val['Govt ID URL']}" />.</span><br>
+            <span>Screenshot of payment URL: <img class="ss"  src="${val['Screenshot of payment URL']}" />.</span><br>
+            <span>Student ID URL: <img class="ss"  src="${val['Student ID URL']}" />.</span><br>
+
+            <span>Student?: ${val['Student?']}.</span><br>
+            <span>Timestamp: ${val['Timestamp']}.</span><br>
+            <span>Transaction ID: ${val['Transaction ID']}.</span><br>
+
+            </div>
+               </li>
+            `);
         }
 
         function onScanFailure(error) {
             // handle scan failure, usually better to ignore and keep scanning.
             // for example:
-            console.warn(`Code scan error = ${error}`);
-        }
+            console.warn(`Code scan error = ${error}`);        }
 
         let html5QrcodeScanner = new Html5QrcodeScanner(
             "reader",
