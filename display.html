@@ -97,9 +97,10 @@
             { fps: 10, qrbox: { width: 250, height: 250 } }, verbose = false);
         html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
-        $(document).ready(function () {
-            $('.collapsible').collapsible();
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, options);
+  });
     </script>
 </body>
 
