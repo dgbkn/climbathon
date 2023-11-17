@@ -228,7 +228,7 @@ async function submitToGoogleForm(
     if(nt == null){
       nt = 1000;
       //val
-      await BIDNUMBER.put("nt", 500);
+      await BIDNUMBER.put("nt", 1000);
     }else{
       nt++;
       await BIDNUMBER.put("nt", nt);
