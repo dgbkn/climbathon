@@ -100,7 +100,6 @@
             var namehashemail = decodedText.replace("DEMO:", '').trim();
             namehashemail = atob(namehashemail);
             var [name,email] = namehashemail.split("#");
-            console.log([name,email],dataME);
 
             var val = dataME.filter(obj => {
                 return obj["Full Name"] == name && obj["Email Id"] == email
