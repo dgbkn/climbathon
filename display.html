@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climbthaon Display</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</head>
+
+<body>
+
+    <script>
+
+        $.getJSON("https://pwsheets.vercel.app/api/getDirectRange?range=A1:Q41&sheetId=1N0I5ob_R2CJKpofxUsw0YGcTbKnk2I5xZNgI-C4F34c", function (data) {
+            var items = [];
+
+            console.log(data);
+            //   $.each( data, function( key, val ) {
+            //     items.push( "<li id='" + key + "'>" + val + "</li>" );
+            //   });
+
+            //   $( "<ul/>", {
+            //     "class": "my-new-list",
+            //     html: items.join( "" )
+            //   }).appendTo( "body" );
+        });
+
+    </script>
+</body>
+
+</html>
