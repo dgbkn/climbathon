@@ -21,6 +21,7 @@ function isValidIndianPhoneNumber(phoneNumber) {
 
 async function handleRequest(request) {
   try {
+
     // Check if the request method is POST
     if (request.method === "POST") {
       const formData = await request.formData();
@@ -204,6 +205,11 @@ async function submitToGoogleForm(
   paymentGateway,
   runningDistance
 ) {
+
+
+
+
+
   const formUrl =
     "https://docs.google.com/forms/d/e/1FAIpQLSfxIRlBfpbJ6QS0JLh2bdy7-PZ1Fe5WlANecsHFOF6_RDUWvQ/formResponse";
 
@@ -214,7 +220,38 @@ async function submitToGoogleForm(
   urlencoded.append("entry.519431154", age);
   urlencoded.append("entry.1592595101", contact || "n/a");
   urlencoded.append("entry.1193926513", clgName || "n/a");
-  urlencoded.append("entry.875091108", schoolName || "n/a");
+
+  var bidNo;
+
+  if(studentCategory == "Non Thapar Student"){
+    var nt = await BIDNUMBER.get("nt");
+    if(nt == null){
+      nt = 1000;
+      //val
+      await BIDNUMBER.put("nt", 500);
+    }else{
+      nt++;
+      await BIDNUMBER.put("nt", nt);
+    }
+    urlencoded.append("entry.875091108",nt);
+    bidNo = nt;
+  }else{
+    var t = await BIDNUMBER.get("t");
+    if(t == null){
+      t = 500;
+      //val
+      await BIDNUMBER.put("t", 500);
+    }else{
+      t++;
+      await BIDNUMBER.put("t", t);
+    }
+    bidNo  = t;
+    urlencoded.append("entry.875091108",t);
+  }
+
+  // urlencoded.append("entry.875091108", schoolName || "n/a");
+
+
   urlencoded.append("entry.31134898", studentIdUrl || "n/a");
   urlencoded.append("entry.463664041", govIdUrl || "n/a");
   urlencoded.append("entry.1672731479", rNo || "n/a");
@@ -235,7 +272,7 @@ async function submitToGoogleForm(
     // Send email
     const uid = generateUniqueUID(name, email);
 
-    const emailEndpoint = `https://goyalinfocom.com/google_api/sent_mail.php?uid=${uid}&sendto=${encodeURIComponent(
+    const emailEndpoint = `https://goyalinfocom.com/google_api/sent_mail.php?uid=${uid}&bidNo=${bidNo}&sendto=${encodeURIComponent(
       email
     )}`;
     await fetch(emailEndpoint);
