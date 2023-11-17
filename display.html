@@ -23,7 +23,9 @@
 </head>
 
 <body>
-    <div id="CURRENTSCAN">
+    <div>
+        <span>CURRENT SCAN:</span><br>
+        <ul class="collapsible" id="CURRENTSCAN">
 
     </div>
 
@@ -104,6 +106,9 @@
             var val = dataME.filter(obj => {
                 return obj["Full Name"] == name && obj["Email Id"] == email
                 });
+
+                console.log(val);
+                val = val[0];
 
 
             $("CURRENTSCAN").html(`
