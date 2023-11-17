@@ -19,25 +19,64 @@
 
 <body>
 
-    <script>
+    <ul class="collapsible" id="DATAHERE">
 
-        $.getJSON("https://pwsheets.vercel.app/api/getDirectRange?range=A1:Q41&sheetId=1N0I5ob_R2CJKpofxUsw0YGcTbKnk2I5xZNgI-C4F34c", function (data) {
+    </ul>
+
+
+
+    <script>
+        function checkNa(val) {
+            if (val == "n/a" || val == "N/A" || val == null || val == "") {
+                return true;
+            }
+            return false;
+        }
+
+        $.getJSON("https://pwsheets.vercel.app/api/getDirectRange?range=A1:Q4100&sheetId=1N0I5ob_R2CJKpofxUsw0YGcTbKnk2I5xZNgI-C4F34c", function (data) {
             data = data.filter(value => Object.keys(value).length !== 0);
 
             var items = [];
 
             console.log(data);
-            //   $.each( data, function( key, val ) {
-            //     items.push( "<li id='" + key + "'>" + val + "</li>" );
-            //   });
+
+
+            $.each(data, function (key, val) {
+                items.push(`
+                <li>
+         <div class="collapsible-header">${val['Full Name']}</div>
+         <div class="collapsible-body">
+            
+            <span>Email Id: ${val['Age']}.</span><br>
+            <span>Contact Number: ${val['Contact Number']}.</span><br>
+            <span>Age: ${val['Age']}.</span><br>
+            <span>Roll Number: ${val['Roll Number']}.</span><br>
+            <span>College Student (if yes add college name): ${val['College Student (if yes add college name)']}.</span><br>
+            <span>Gender: ${val['Gender']}.</span><br>
+            <span>Payment Gateway used: ${val['Payment Gateway used']}.</span><br>
+            <span>Phone no. through which payment is made: ${val['Phone no. through which payment is made']}.</span><br>
+            <span>Running Distance: ${val['Running Distance']}.</span><br>
+            <span>School Student (if yes add school name): ${val['School Student (if yes add school name)']}.</span><br>
+            <span>Govt ID URL: ${val['Govt ID URL']}.</span><br>
+            <span>Screenshot of payment URL: ${val['Screenshot of payment URL']}.</span><br>
+            <span>Student ID URL: ${val['Student ID URL']}.</span><br>
+            <span>Student?: ${val['Student?']}.</span><br>
+            <span>Timestamp: ${val['Timestamp']}.</span><br>
+            <span>Transaction ID: ${val['Transaction ID']}.</span><br>
+
+            </div>
+               </li>
+                
+                ` );
+            });
 
             //   $( "<ul/>", {
             //     "class": "my-new-list",
             //     html: items.join( "" )
             //   }).appendTo( "body" );
         });
-</script>
-<script>
+    </script>
+    <script>
 
         function onScanSuccess(decodedText, decodedResult) {
             // handle the scanned code as you like, for example:
@@ -52,7 +91,7 @@
 
         let html5QrcodeScanner = new Html5QrcodeScanner(
             "reader",
-            { fps: 10, qrbox: { width: 250, height: 250 } },verbose= false);
+            { fps: 10, qrbox: { width: 250, height: 250 } }, verbose = false);
         html5QrcodeScanner.render(onScanSuccess, onScanFailure);
     </script>
 </body>
