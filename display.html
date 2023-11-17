@@ -99,6 +99,7 @@
 
             var namehashemail = decodedText.replace("DEMO:", '').trim();
             namehashemail = atob(namehashemail);
+            console.log(namehashemail);
             var [name,email] = namehashemail.split("#");
 
             var val = dataME.filter(obj => {
