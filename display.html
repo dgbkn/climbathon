@@ -22,6 +22,8 @@
     <script>
 
         $.getJSON("https://pwsheets.vercel.app/api/getDirectRange?range=A1:Q41&sheetId=1N0I5ob_R2CJKpofxUsw0YGcTbKnk2I5xZNgI-C4F34c", function (data) {
+            data = data.filter(value => Object.keys(value).length !== 0);
+
             var items = [];
 
             console.log(data);
