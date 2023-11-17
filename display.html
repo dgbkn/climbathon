@@ -103,15 +103,15 @@
             namehashemail = atob(namehashemail);
             var [name,email] = namehashemail.split("#");
 
-            var val = dataME.filter(obj => {
+            var vals = dataME.filter(obj => {
                 return obj["Full Name"] == name && obj["Email Id"] == email;
                 });
 
                 console.log(val);
-                val = val[0];
 
-
-           document.getElementById("CURRENTSCAN").innerHTML = `
+                document.getElementById("CURRENTSCAN").innerHTML = '';
+                vals.forEach(val => {
+                    document.getElementById("CURRENTSCAN").innerHTML += `
             <li>
          <div class="collapsible-header"><b>${val['Full Name']}</b></div>
          <div class="collapsible-body">
@@ -138,6 +138,8 @@
             </div>
                </li>
             `;
+                });
+
         }
 
         function onScanFailure(error) {
