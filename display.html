@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    <div id="reader"></div>
 
     <ul class="collapsible" id="DATAHERE">
 
@@ -42,7 +43,7 @@
 
 
             $.each(data, function (key, val) {
-                $( "#DATAHERE" ).append(`
+                $("#DATAHERE").append(`
                 <li>
          <div class="collapsible-header">${val['Full Name']}</div>
          <div class="collapsible-body">
@@ -95,6 +96,10 @@
             "reader",
             { fps: 10, qrbox: { width: 250, height: 250 } }, verbose = false);
         html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+        $(document).ready(function () {
+            $('.collapsible').collapsible();
+        });
     </script>
 </body>
 
