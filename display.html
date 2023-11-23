@@ -16,7 +16,7 @@
 
 
     <style>
-        img.ss{
+        img.ss {
             height: 500px;
         }
     </style>
@@ -101,17 +101,17 @@
 
             var namehashemail = decodedText.replace("DEMO:", '').trim();
             namehashemail = atob(namehashemail);
-            var [name,email] = namehashemail.split("#");
+            var [name, email] = namehashemail.split("#");
 
             var vals = dataME.filter(obj => {
                 return obj["Full Name"] == name && obj["Email Id"] == email;
-                });
+            });
 
-                console.log(vals);
+            console.log(vals);
 
-                document.getElementById("CURRENTSCAN").innerHTML = '';
-                vals.forEach(val => {
-                    document.getElementById("CURRENTSCAN").innerHTML += `
+            document.getElementById("CURRENTSCAN").innerHTML = '';
+            vals.forEach(val => {
+                document.getElementById("CURRENTSCAN").innerHTML += `
             <li>
          <div class="collapsible-header"><b>${val['Full Name']}</b></div>
          <div class="collapsible-body">
@@ -138,24 +138,29 @@
             </div>
                </li>
             `;
-                });
+            });
 
         }
 
         function onScanFailure(error) {
             // handle scan failure, usually better to ignore and keep scanning.
             // for example:
-            console.warn(`Code scan error = ${error}`);        }
+            console.warn(`Code scan error = ${error}`);
+        }
 
         let html5QrcodeScanner = new Html5QrcodeScanner(
             "reader",
-            { fps: 10, qrbox: { width: 250, height: 250 },facingMode: { exact: "environment"} }, verbose = false);
+            {
+                fps: 10, qrbox: { width: 250, height: 250 }, videoConstraints: {
+                    facingMode: { exact: "environment" },
+                },
+            }, verbose = false);
         html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
-        document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems);
-  });
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.collapsible');
+            var instances = M.Collapsible.init(elems);
+        });
     </script>
 </body>
 
